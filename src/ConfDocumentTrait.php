@@ -47,4 +47,13 @@ trait ConfDocumentTrait
 
         return $doc;
     }
+
+    /// Register the document element's namespace as XPath prefix `c`
+    protected function afterLoad(): void
+    {
+        parent::afterLoad();
+
+        $this->getXPath()
+            ->registerNamespace('c', $this->documentElement->namespaceURI);
+    }
 }
