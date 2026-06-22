@@ -1,0 +1,4 @@
+<?xml version="1.0"?>
+<conf xmlns="http://conf.example.org" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:dc="http://purl.org/dc/terms/" xsi:schemaLocation="http://conf.example.org file:///home/rizzardo/src/alcamo-xml-conf/tests/conf.xsd" dc:created="2026-06-22T15:57:02+00:00">
+  <param xml:id="foo" value="bar"/>
+</conf>

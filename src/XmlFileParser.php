@@ -13,18 +13,23 @@ use alcamo\uri\FileUriFactory;
  */
 class XmlFileParser implements FileParserInterface
 {
-    public const DOC_CLASS = Document::class;
+    public const DOCUMENT_CLASS = Document::class;
 
-    private $docClass_; ///< string
+    private $documentClass_; ///< string
 
-    public function __construct(?string $docClass = null)
+    public function __construct(?string $documentClass = null)
     {
-        $this->docClass_ = $docClass ?? static::DOC_CLASS;
+        $this->documentClass_ = $documentClass ?? static::DOCUMENT_CLASS;
+    }
+
+    public function getDocumentClass(): string
+    {
+        return $this->documentClass_;
     }
 
     public function parse(string $path, ?int $flags = null)
     {
-        return ($this->docClass_)::newFromUri(
+        return ($this->documentClass_)::newFromUri(
             (new FileUriFactory())->create($path)
         );
     }

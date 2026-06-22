@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<xsd:schema
+    xmlns="http://conf.example.org"
+    xmlns:dc="http://purl.org/dc/terms/"
+    xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+    targetNamespace="http://conf.example.org"
+    elementFormDefault="qualified">
+  <xsd:import
+      namespace="http://purl.org/dc/terms/"
+      schemaLocation="../vendor/alcamo/dom/xsd/dc.xsd"/>
+  <xsd:import
+      namespace="http://www.w3.org/XML/1998/namespace"
+      schemaLocation="../vendor/alcamo/dom/xsd/xml.xsd"/>
+
+  <xsd:element name="conf">
+    <xsd:complexType>
+      <xsd:sequence>
+        <xsd:element name="param" maxOccurs="unbounded">
+          <xsd:complexType>
+            <xsd:attribute ref="xml:id"/>
+            <xsd:attribute name="value" type="xsd:string"/>
+          </xsd:complexType>
+        </xsd:element>
+      </xsd:sequence>
+
+      <xsd:attribute ref="dc:created" use="required"/>
+    </xsd:complexType>
+  </xsd:element>
+</xsd:schema>
