@@ -7,7 +7,7 @@ use alcamo\dom\psvi\Document;
 /**
  * @brief Base class for configuration document classes
  *
- * @date Last reviewed 2026-01-22
+ * @date Last reviewed 2026-06-22
  */
 abstract class AbstractConfDocument extends Document implements
     ConfDocumentInterface

@@ -7,7 +7,7 @@ use alcamo\uri\FileUriFactory;
 /**
  * @brief Trait for configuration document classes
  *
- * @date Last reviewed 2026-01-22
+ * @date Last reviewed 2026-06-22
  */
 trait ConfDocumentTrait
 {
