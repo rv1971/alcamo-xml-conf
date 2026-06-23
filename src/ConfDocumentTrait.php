@@ -31,8 +31,6 @@ trait ConfDocumentTrait
 
         $doc = self::newFromUri($fileUriFactory->create($docPathname));
 
-        $doc->formatOutput = true;
-
         if (isset($xsdPathname)) {
             $doc->documentElement->setAttributeNS(
                 self::XSI_NS,
@@ -52,6 +50,8 @@ trait ConfDocumentTrait
     protected function afterLoad(): void
     {
         parent::afterLoad();
+
+        $this->formatOutput = true;
 
         $this->getXPath()
             ->registerNamespace('c', $this->documentElement->namespaceURI);
