@@ -46,6 +46,18 @@ trait ConfDocumentTrait
         return $doc;
     }
 
+    /**
+     * @brief Call __get
+     *
+     * This leaves complete freedom to implement __get() a needed. For
+     * instance, __get() might evaluate different parts of the configuration
+     * file dpeneding on the option.
+     */
+    public function __isset(string $optionName): bool
+    {
+        return $this->__get($optionName) !== null;
+    }
+
     /// Register the document element's namespace as XPath prefix `c`
     protected function afterLoad(): void
     {
