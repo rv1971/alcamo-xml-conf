@@ -1,5 +1,5 @@
 <?xml version="1.0"?>
 
-<conf xmlns="http://conf.example.org">
-  <param xml:id="foo" value="bar"/>
+<conf xmlns="http://conf.example.org" foo="FOO">
+  <bar baz="42"/>
 </conf>

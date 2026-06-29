@@ -5,7 +5,7 @@ namespace alcamo\xml_conf;
 use alcamo\uri\FileUriFactory;
 
 /**
- * @brief Trait for configuration document classes
+ * @brief Trait for a configuration document class
  *
  * @date Last reviewed 2026-06-22
  */
@@ -56,6 +56,21 @@ trait ConfDocumentTrait
     public function __isset(string $optionName): bool
     {
         return $this->__get($optionName) !== null;
+    }
+
+    /**
+     * @brief Return attribute or child element of document element
+     *
+     * @return Attribute with name $optionName if the type of the document
+     * element supports such an attribute (returning `null` if the attribute
+     * is supported but absent in the instance document). Otherwise the first
+     * child element with local name $optionName in the document namespace.
+     */
+    public function __get(string $optionName)
+    {
+        return isset($this->documentElement->getType()->getAttrs()[$optionName])
+            ? $this->documentElement->$optionName
+            : $this->query("/*/c:$optionName")[0];
     }
 
     /// Register the document element's namespace as XPath prefix `c`

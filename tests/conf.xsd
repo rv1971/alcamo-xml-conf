@@ -16,15 +16,15 @@
   <xsd:element name="conf">
     <xsd:complexType>
       <xsd:sequence>
-        <xsd:element name="param" maxOccurs="unbounded">
+        <xsd:element name="bar">
           <xsd:complexType>
-            <xsd:attribute ref="xml:id"/>
-            <xsd:attribute name="value" type="xsd:string"/>
+            <xsd:attribute name="baz" type="xsd:byte"/>
           </xsd:complexType>
         </xsd:element>
       </xsd:sequence>
 
       <xsd:attribute ref="dc:created" use="required"/>
+      <xsd:attribute name="foo" type="xsd:string"/>
     </xsd:complexType>
   </xsd:element>
 </xsd:schema>

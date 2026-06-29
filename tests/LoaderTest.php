@@ -4,10 +4,6 @@ namespace alcamo\xml_conf;
 
 use PHPUnit\Framework\TestCase;
 
-class ConfDocument extends AbstractConfDocument
-{
-}
-
 class LoaderTest extends TestCase
 {
     public function testCreateFromXmlPathnameIfNotExistsAndLoad(): void
@@ -33,7 +29,7 @@ class LoaderTest extends TestCase
 
         $loader = new Loader(null, new XmlFileParser(ConfDocument::class));
 
-        $data = $loader->createFromXmlPathnameIfNotExistsAndLoad(
+        $conf = $loader->createFromXmlPathnameIfNotExistsAndLoad(
             $targetFilename,
             $examplePathname,
             $xsdPathname,
@@ -41,7 +37,8 @@ class LoaderTest extends TestCase
         );
 
         $this->assertSame($targetPathname, $pathname);
-        $this->assertSame('bar', $data['foo']->value);
-        $this->assertNotNull($data->documentElement->{'dc:created'});
+        $this->assertNotNull($conf->documentElement->{'dc:created'});
+        $this->assertSame('FOO', $conf->foo);
+        $this->assertSame(42, $conf->bar->baz);
     }
 }
