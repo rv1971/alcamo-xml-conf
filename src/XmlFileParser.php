@@ -4,7 +4,6 @@ namespace alcamo\xml_conf;
 
 use alcamo\conf\FileParserInterface;
 use alcamo\dom\psvi\Document;
-use alcamo\uri\FileUriFactory;
 
 /**
  * @brief Parser for XML files
@@ -27,10 +26,8 @@ class XmlFileParser implements FileParserInterface
         return $this->documentClass_;
     }
 
-    public function parse(string $path, ?int $flags = null)
+    public function parse(string $pathname, ?int $flags = null)
     {
-        return ($this->documentClass_)::newFromUri(
-            (new FileUriFactory())->create($path)
-        );
+        return ($this->documentClass_)::newFromPathname($pathname);
     }
 }

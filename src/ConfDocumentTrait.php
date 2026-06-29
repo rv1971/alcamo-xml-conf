@@ -73,6 +73,12 @@ trait ConfDocumentTrait
             : $this->query("/*/c:$optionName")[0];
     }
 
+    /// Set option as attribute of document element
+    public function __set($optionName, $value): void
+    {
+        $this->documentElement->setAttribute($optionName, $value);
+    }
+
     /// Register the document element's namespace as XPath prefix `c`
     protected function afterLoad(): void
     {
