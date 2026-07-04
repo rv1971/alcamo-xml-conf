@@ -40,5 +40,7 @@ class LoaderTest extends TestCase
         $this->assertNotNull($conf->documentElement->{'dc:created'});
         $this->assertSame('FOO', $conf->foo);
         $this->assertSame(42, $conf->bar->baz);
+
+        unlink($targetPathname);
     }
 }

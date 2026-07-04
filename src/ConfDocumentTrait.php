@@ -32,16 +32,12 @@ trait ConfDocumentTrait
         $doc = self::newFromUri($fileUriFactory->create($docPathname));
 
         if (isset($xsdPathname)) {
-            $doc->documentElement->setAttributeNS(
-                self::XSI_NS,
-                'xsi:schemaLocation',
+            $doc->documentElement->{'xsi:schemaLocation'} =
                 $doc->documentElement->namespaceURI . ' '
-                . $fileUriFactory->create($xsdPathname)
-            );
+                . $fileUriFactory->create($xsdPathname);
         }
 
-        $doc->documentElement
-            ->setAttributeNS(self::DC_NS, 'dc:created', date('c'));
+        $doc->documentElement->{'dc:created'} = date('c');
 
         return $doc;
     }
@@ -76,7 +72,7 @@ trait ConfDocumentTrait
     /// Set option as attribute of document element
     public function __set($optionName, $value): void
     {
-        $this->documentElement->setAttribute($optionName, $value);
+        $this->documentElement->$optionName = $value;
     }
 
     /// Register the document element's namespace as XPath prefix `c`
